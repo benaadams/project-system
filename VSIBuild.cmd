@@ -1,3 +1,5 @@
+setlocal enabledelayedexpansion
+
 if "%1" == "-configuration" if "%3" == "-prepareMachine" (
   SET EXE_DIR=%~dp0artifacts\%2\tmp
   SET LOG_DIR=%~dp0artifacts\%2\log
