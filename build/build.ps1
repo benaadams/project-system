@@ -105,7 +105,7 @@ if ($ci -and $restore -and $prepareMachine) {
     $dotnetCliSetupExe = Join-Path $TempDir "dotnet-dev-win-x64.1.0.4.exe"
     $dotnetCliSetupLog = Join-Path $LogDir "cli_install.log"
 
-    Invoke-WebRequest "https://download.microsoft.com/download/B/9/F/B9F1AF57-C14A-4670-9973-CDF47209B5BF/dotnet-dev-win-x64.1.0.4.exe" -OutFile $dotnetCliSetup
+    Invoke-WebRequest "https://download.microsoft.com/download/B/9/F/B9F1AF57-C14A-4670-9973-CDF47209B5BF/dotnet-dev-win-x64.1.0.4.exe" -OutFile $dotnetCliSetupLog
 
     & $dotnetCliSetupExe /install /quiet /norestart /log $dotnetCliSetupLog
 
