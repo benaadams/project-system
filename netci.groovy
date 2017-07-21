@@ -4,10 +4,12 @@
 import jobs.generation.Utilities;
 import jobs.generation.ArchivalSettings;
 
-static addArchival(def job) {
+static addArchival(def job, def configName) {
   def archivalSettings = new ArchivalSettings()
   archivalSettings.addFiles("**/artifacts/**")
   archivalSettings.excludeFiles("**/artifacts/${configName}/obj/**")
+  archivalSettings.excludeFiles("**/artifacts/${configName}/tmp/**")
+  archivalSettings.excludeFiles("**/artifacts/${configName}/VSSetup.obj/**")
   archivalSettings.setFailIfNothingArchived()
   archivalSettings.setArchiveOnFailure()
 
@@ -40,7 +42,7 @@ static createJob(def projectName, def branchName, def platform, def configName, 
   Utilities.standardJobSetup(newJob, projectName, isPR, "*/${branchName}")
 
   addGithubTrigger(newJob, isPR, branchName, jobName)
-  addArchival(newJob)
+  addArchival(newJob, configName)
   addXUnitDotNETResults(newJob, configName)
 
   return newJob
