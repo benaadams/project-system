@@ -99,14 +99,6 @@ if ($ci -and $restore -and $prepareMachine) {
   if (Test-Path $nugetRoot) {
     Remove-Item $nugetRoot -Recurse -Force
   }
-
-  # Install dotnet cli for integration tests
-  if ($integrationTest) {
-    $dotnetCliSetupExe = Join-Path $TempDir "dotnet-dev-win-x64.1.0.4.exe"
-    $dotnetCliSetupLog = Join-Path $LogDir "cli_install.log"
-
-    Invoke-WebRequest "https://download.microsoft.com/download/B/9/F/B9F1AF57-C14A-4670-9973-CDF47209B5BF/dotnet-dev-win-x64.1.0.4.exe" -OutFile $dotnetCliSetupExe    
-  }
 }
 
 Build
