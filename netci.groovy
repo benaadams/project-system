@@ -2,6 +2,7 @@
 // Jenkins DSL: https://github.com/jenkinsci/job-dsl-plugin/wiki
 
 import jobs.generation.Utilities;
+import jobs.generation.ArchivalSettings;
 
 static addArchival(def job) {
   def archivalSettings = new ArchivalSettings()
