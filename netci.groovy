@@ -33,10 +33,7 @@ static addXUnitDotNETResults(def job, def configName) {
   Utilities.addXUnitDotNETResults(job, resultFilePattern, skipIfNoTestFiles)
 }
 
-static createJob(def platform, def configName, def isPR) {
-  def projectName = GithubProject
-  def branchName = GithubBranchName
-
+static createJob(def projectName, def branchName, def platform, def configName, def isPR) {
   def jobName = "${platform}_${configName}"
   def newJob = job(Utilities.getFullJobName(projectName, jobName, isPR))
 
@@ -52,8 +49,7 @@ static createJob(def platform, def configName, def isPR) {
 [true, false].each { isPR ->
   ['windows', 'windows_integration'].each { platform ->
     ['debug', 'release'].each { configName ->
-  
-      def newJob = createJob(platform, configName, isPR)
+      def newJob = createJob(GithubProject, GithubBranchName, platform, configName, isPR)
 
       Utilities.setMachineAffinity(newJob, 'Windows_NT', 'latest-dev15-3-preview2')
 
