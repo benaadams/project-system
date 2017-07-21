@@ -96,7 +96,7 @@ if ($ci -and $restore -and $prepareMachine) {
 
   # clean nuget packages -- necessary to avoid mismatching versions of swix microbuild build plugin and VSSDK on Jenkins
   $nugetRoot = (Join-Path $env:USERPROFILE ".nuget\packages")
-  if ( -and (Test-Path $nugetRoot)) {
+  if (Test-Path $nugetRoot) {
     Remove-Item $nugetRoot -Recurse -Force
   }
 
