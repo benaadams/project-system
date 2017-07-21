@@ -35,10 +35,9 @@ static addXUnitDotNETResults(def job, def configName) {
   Utilities.addXUnitDotNETResults(job, resultFilePattern, skipIfNoTestFiles)
 }
 
-static createJob(def projectName, def branchName, def platform, def configName, def isPR) {
+createJob(def projectName, def branchName, def platform, def configName, def isPR) {
   def jobName = "${platform}_${configName}"
-  def fullJobName = Utilities.getFullJobName(projectName, jobName, isPR)
-  def newJob = job(fullJobName)
+  def newJob = job(Utilities.getFullJobName(projectName, jobName, isPR))
 
   Utilities.standardJobSetup(newJob, projectName, isPR, "*/${branchName}")
 
