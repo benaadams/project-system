@@ -1,4 +1,7 @@
 if "%1" == "-configuration" if "%3" == "-prepareMachine" (  
+  mkdir "%~dp0artifacts\%2\tmp"
+  mkdir "%~dp0artifacts\%2\log"
+
   echo Downloading dotnet ...  
   powershell -NoProfile -ExecutionPolicy Bypass -Command "((New-Object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/B/9/F/B9F1AF57-C14A-4670-9973-CDF47209B5BF/dotnet-dev-win-x64.1.0.4.exe', '%~dp0artifacts\%2\tmp\dotnet-dev-win-x64.1.0.4.exe'))"
   
