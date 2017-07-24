@@ -1,3 +1,5 @@
+@echo off
+
 if "%1" == "-configuration" if "%3" == "-prepareMachine" (  
   mkdir "%~dp0artifacts\%2\tmp"
   mkdir "%~dp0artifacts\%2\log"
